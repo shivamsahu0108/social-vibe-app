@@ -71,7 +71,13 @@
 
 ## 📸 Screenshots
 
-_(Add screenshots of your application here)_
+|                              Login Page                              |                              Sign Up Page                               |
+| :------------------------------------------------------------------: | :---------------------------------------------------------------------: |
+| <img src="docs/screenshots/login.png" alt="Login Page" width="400"/> | <img src="docs/screenshots/signup.png" alt="Sign Up Page" width="400"/> |
+
+|                               User Profile                               |
+| :----------------------------------------------------------------------: |
+| <img src="docs/screenshots/profile.png" alt="User Profile" width="800"/> |
 
 ## 🤝 Contributing
 
