@@ -5,6 +5,10 @@
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
+## 🌐 Live Demo
+
+👉 **[vibeshare-h892.onrender.com](https://vibeshare-h892.onrender.com)**
+
 ## ✨ Features
 
 - **📱 Dynamic Feed**: Browse through photos and videos in an Instagram-like feed.
