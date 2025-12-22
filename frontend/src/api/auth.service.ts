@@ -44,4 +44,9 @@ export const authService = {
     }
   },
   me: (): Promise<UserResponseType> => apiFetch("/api/auth/me"),
+  logout: (): Promise<void> => {
+    // Optional: Call backend to invalidate token if your API supports it.
+    // For now we just resolve, as client side clears the store.
+    return Promise.resolve();
+  },
 };
