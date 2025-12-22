@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat WS Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+</head>
+<body>
+
+<button onclick="connect()">Connect</button>
+<button onclick="sendMessage()">Send Message</button>
+
+<script>
+    let stompClient = null;
+
+    function connect() {
+        const socket = new SockJS("http://localhost:8000/ws-chat");
+        stompClient = Stomp.over(socket);
+
+        stompClient.connect(
+            Headers = {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGl2YW0xMkBnbWFpbC5jb20iLCJpZCI6MiwidXNlcm5hbWUiOiJzaGl2YW0xMjMiLCJpYXQiOjE3NjU2NDQzMTAsImV4cCI6MTc2NTY0NzkxMH0.tVxnBj4a_VSl2nVqsCmZzLjVeFcG7tlLDQklM14tfK0"
+            },
+            function (frame) {
+                console.log("Connected:", frame);
+
+                stompClient.subscribe("/topic/conversations.9", function (msg) {
+                    console.log("Received:", JSON.parse(msg.body));
+                });
+            }
+        );
+    }
+
+    function sendMessage() {
+        stompClient.send(
+            "/app/chat.send",
+            {},
+            JSON.stringify({
+                conversationId: 9,
+                senderId: 2,            // ✅ MUST MATCH JWT
+                content: "Hello from WebSocket",
+                attachmentUrl: null,
+                type: "Message"
+            })
+        );
+    }
+</script>
+
+</body>
+</html>

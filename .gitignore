@@ -1,0 +1,39 @@
+# OS junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Java / Maven
+target/
+*.class
+.settings/
+.classpath
+.project
+*.jar
+*.war
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# Logs
+logs/
+*.log
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs
+*.njsproj
+*.sln
+*.sw?
