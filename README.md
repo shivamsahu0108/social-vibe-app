@@ -37,6 +37,20 @@
 - **Real-time**: Spring WebSocket
 - **Storage**: Cloudinary (for media uploads)
 
+## ⚠️ Important Note: Authentication Update (Email/OTP)
+
+**Why Email Verification is Bypassed?**
+Due to SMTP port restrictions and issues with email delivery on the **Render** hosting platform, the **Email OTP Verification** system has been temporarily disabled. This ensures that users can register and login without getting stuck at the verification step.
+
+**Implementation Changes:**
+
+1.  **Backend (`AuthServiceImpl.java`)**:
+    - **Registration**: New users are automatically marked as `verified = true`.
+    - **Login**: The check for unverified accounts is bypassed.
+    - **Emails**: Code responsible for sending emails (Regsitration OTP, Login OTP, Forgot Password) is commented out.
+2.  **Frontend (`Register.tsx`)**:
+    - **Flow**: The OTP entry step is skipped. After entering registration details, the user is redirected immediately to the Login page.
+
 ## 🚀 Getting Started
 
 ### Prerequisites

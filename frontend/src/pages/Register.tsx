@@ -35,7 +35,7 @@ export default function Register() {
 
     try {
       if (!otpSent) {
-        // Step 1: Register (Send OTP)
+        // Step 1: Register (Send OTP) -> NOW just Register and Redirect
         if (!username || !email || !password) {
           throw new Error("All fields are required");
         }
@@ -43,9 +43,14 @@ export default function Register() {
           method: "POST",
           body: JSON.stringify({ username, email, password }),
         });
-        setOtpSent(true);
+
+        // Skip OTP verification step
+        // setOtpSent(true);
+        navigate("/login");
       } else {
         // Step 2: Verify OTP
+        // Logic skipped
+        /*
         if (!otp) {
           throw new Error("Please enter OTP");
         }
@@ -56,6 +61,7 @@ export default function Register() {
 
         setAccessToken(data.accessToken);
         navigate("/", { replace: true });
+        */
       }
     } catch (err: any) {
       setError(err.message || "Something went wrong");

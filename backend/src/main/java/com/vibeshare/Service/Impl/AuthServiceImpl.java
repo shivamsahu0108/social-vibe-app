@@ -49,7 +49,8 @@ public class AuthServiceImpl implements AuthService {
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setVerified(false);
+        // user.setVerified(false);
+        user.setVerified(true);
 
         // Generate OTP
         String otp = String.format("%06d", new Random().nextInt(999999));
@@ -61,6 +62,7 @@ public class AuthServiceImpl implements AuthService {
 
         // Send Email
         // Send Email
+        /*
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(senderEmail);
@@ -72,6 +74,7 @@ public class AuthServiceImpl implements AuthService {
             System.out.println("FAILED TO SEND EMAIL (Register). OTP: " + otp);
             System.out.println("Error: " + e.getMessage());
         }
+        */
 
         return "OTP sent successfully";
     }
@@ -129,6 +132,7 @@ public class AuthServiceImpl implements AuthService {
                 .or(() -> userRepository.findByUsername(identifier))
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
+/*
         if (!user.isVerified()) {
             // Generate OTP
             String otp = String.format("%06d", new Random().nextInt(999999));
@@ -153,6 +157,7 @@ public class AuthServiceImpl implements AuthService {
 
             throw new IllegalArgumentException("Account not verified. New OTP sent to email.");
         }
+*/
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -207,6 +212,7 @@ public class AuthServiceImpl implements AuthService {
         userRepository.save(user);
 
         // Send Email
+        /*
         try {
             System.out.println("Sending email to: " + email + "otp:" + otp);
             SimpleMailMessage message = new SimpleMailMessage();
@@ -219,6 +225,7 @@ public class AuthServiceImpl implements AuthService {
             System.out.println("FAILED TO SEND EMAIL (Forgot Password). OTP: " + otp);
             System.out.println("Error: " + e.getMessage());
         }
+        */
     }
 
     @Override
