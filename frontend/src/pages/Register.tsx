@@ -13,19 +13,20 @@ import { Label } from "@/components/ui/label";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { apiFetch } from "@/api/client";
-import { useAuthStore } from "@/store";
+// import { useAuthStore } from "@/store";
 
 export default function Register() {
   const navigate = useNavigate();
-  const { setAccessToken } = useAuthStore();
+  // const { setAccessToken } = useAuthStore();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const [otp, setOtp] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
+  // const [otp, setOtp] = useState("");
+  // const [otpSent, setOtpSent] = useState(false);
+  const otpSent = false; // Hardcode to false for now to keep logic simple without changing too much structure
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -136,24 +137,24 @@ export default function Register() {
                   />
                 </div>
               </>
-            ) : (
-              <div className="space-y-2">
-                <div className="text-sm text-center text-muted-foreground mb-2">
-                  Enter the OTP sent to{" "}
-                  <span className="font-semibold text-foreground">{email}</span>
-                </div>
-                <Label htmlFor="otp">Verification Code</Label>
-                <Input
-                  id="otp"
-                  placeholder="Check your email"
-                  className="text-center tracking-widest text-lg"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  disabled={loading}
-                  maxLength={6}
-                />
-              </div>
-            )}
+            ) : null
+            // <div className="space-y-2">
+            //   <div className="text-sm text-center text-muted-foreground mb-2">
+            //     Enter the OTP sent to{" "}
+            //     <span className="font-semibold text-foreground">{email}</span>
+            //   </div>
+            //   <Label htmlFor="otp">Verification Code</Label>
+            //   <Input
+            //     id="otp"
+            //     placeholder="Check your email"
+            //     className="text-center tracking-widest text-lg"
+            //     value={otp}
+            //     onChange={(e) => setOtp(e.target.value)}
+            //     disabled={loading}
+            //     maxLength={6}
+            //   />
+            // </div>
+            }
           </CardContent>
 
           <CardFooter className="flex flex-col space-y-4">
